@@ -34,7 +34,7 @@ class _LayOutPageState extends State<LayOutPage> {
   BottomNavigationBar menuBar() {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      //vision1
+      //vision2
       // backgroundColor: Color(0xFF6200EE),
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white.withOpacity(.60),
