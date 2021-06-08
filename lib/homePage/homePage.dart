@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             height: height,
             viewportFraction: 1.0,
             enlargeCenterPage: false,
-            // autoPlay: false,
+            autoPlay: true,
           ),
           items: pic
               .map((item) => Container(

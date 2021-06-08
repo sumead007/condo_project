@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Container btnLogin(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: MediaQuery.of(context).size.width * 0.8,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: Colors.blue.shade800, // background
@@ -68,6 +68,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Container bg_left(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.45,
+      child: Image.asset("images/background.png"),
+    );
+  }
+
+  Container bg_right(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.9,
+      child: Image.asset(
+        "images/background.png",
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,14 +94,8 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Image.asset("images/background.png"),
-                ),
-                Image.asset(
-                  "images/background.png",
-                  height: MediaQuery.of(context).size.height * 0.9,
-                ),
+                bg_left(context),
+                bg_right(context),
               ],
             ),
             Container(
@@ -103,7 +113,14 @@ class _LoginPageState extends State<LoginPage> {
                   MyStyles().mysizedBox,
                   textFormFieldPassword(),
                   MyStyles().mysizedBox,
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Image.asset('images/line_login.png'),
+                  ),
+                  MyStyles().mysizedBox,
                   btnLogin(context),
+                  MyStyles().mysizedBox,
+                  Text("Version. 1.0.0"),
                 ],
               ) /* add child content here */,
             ),

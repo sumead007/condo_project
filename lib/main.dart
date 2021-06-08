@@ -1,4 +1,6 @@
 
+// @dart=2.9
+
 import 'package:condo_project/login/loginPage.dart';
 import 'package:flutter/material.dart';
 
@@ -6,14 +8,9 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  // const MyApp({ Key? key }) : super(key: key);
 
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,3 +33,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
