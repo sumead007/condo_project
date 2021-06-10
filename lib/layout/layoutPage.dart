@@ -1,4 +1,7 @@
+import 'package:condo_project/familyMart/familyMartPage.dart';
 import 'package:condo_project/homePage/homePage.dart';
+import 'package:condo_project/message/messagePage.dart';
+import 'package:condo_project/reward/rewardPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,10 +19,13 @@ class _LayOutPageState extends State<LayOutPage> {
   void _onItemTapped(int index) {
     if (index == 0) {
       // reward
+      currentPage = RewardPage();
     } else if (index == 1) {
       // famillymart
+      currentPage = FamilyMartPage();
     } else if (index == 2) {
       //message
+      currentPage = MessagePage();
     } else if (index == 3) {
       //profile
     } else {
@@ -50,7 +56,7 @@ class _LayOutPageState extends State<LayOutPage> {
           label: 'FamillyMart',
         ),
         BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.award),
+          icon: Icon(Icons.notifications),
           label: 'Message',
         ),
         BottomNavigationBarItem(
@@ -81,7 +87,7 @@ class _LayOutPageState extends State<LayOutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: Center(
         child: currentPage,
       ),

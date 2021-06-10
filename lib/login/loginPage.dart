@@ -60,7 +60,9 @@ class _LoginPageState extends State<LoginPage> {
         onPressed: () {
           MaterialPageRoute materialPageRoute =
               MaterialPageRoute(builder: (context) => LayOutPage());
-          Navigator.of(context).push(materialPageRoute);
+          // Navigator.of(context).push(materialPageRoute);
+          Navigator.pushAndRemoveUntil(
+              context, materialPageRoute, (route) => false);
           //แก้ไม่้ให้กลับหน้าเดิม
         },
         child: Text('เข้าสู่ระบบ'),
@@ -87,44 +89,46 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                bg_left(context),
-                bg_right(context),
-              ],
-            ),
-            Container(
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     image: AssetImage("images/background.png"),
-              //     fit: BoxFit.cover,
-              //     repeat: ImageRepeat.repeatX
-              //   ),
-              // ),
-              child: Column(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  logo(),
-                  textFormFieldTelephone(),
-                  MyStyles().mysizedBox,
-                  textFormFieldPassword(),
-                  MyStyles().mysizedBox,
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Image.asset('images/line_login.png'),
-                  ),
-                  MyStyles().mysizedBox,
-                  btnLogin(context),
-                  MyStyles().mysizedBox,
-                  Text("Version. 1.0.0"),
+                  bg_left(context),
+                  bg_right(context),
                 ],
-              ) /* add child content here */,
-            ),
-          ],
+              ),
+              Container(
+                // decoration: BoxDecoration(
+                //   image: DecorationImage(
+                //     image: AssetImage("images/background.png"),
+                //     fit: BoxFit.cover,
+                //     repeat: ImageRepeat.repeatX
+                //   ),
+                // ),
+                child: Column(
+                  children: [
+                    logo(),
+                    textFormFieldTelephone(),
+                    MyStyles().mysizedBox,
+                    textFormFieldPassword(),
+                    MyStyles().mysizedBox,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Image.asset('images/line_login.png'),
+                    ),
+                    MyStyles().mysizedBox,
+                    btnLogin(context),
+                    MyStyles().mysizedBox,
+                    Text("Version. 1.0.0"),
+                  ],
+                ) /* add child content here */,
+              ),
+            ],
+          ),
         ),
       ),
     );
