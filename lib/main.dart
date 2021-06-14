@@ -1,5 +1,6 @@
-
 // @dart=2.9
+
+import 'dart:io';
 
 import 'package:condo_project/login/loginPage.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromRGBO(75,75,75,0),
+        scaffoldBackgroundColor: const Color.fromRGBO(75, 75, 75, 0),
         brightness: Brightness.light,
         /* light theme settings */
       ),
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         /* dark theme settings */
       ),
-      themeMode: ThemeMode.dark, 
+      themeMode: ThemeMode.dark,
       /* ThemeMode.system to follow system theme, 
          ThemeMode.light for light theme, 
          ThemeMode.dark for dark theme
@@ -34,3 +35,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}

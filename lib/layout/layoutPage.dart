@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:condo_project/familyMart/familyMartPage.dart';
 import 'package:condo_project/homePage/homePage.dart';
 import 'package:condo_project/message/messagePage.dart';
+import 'package:condo_project/profile/profilePage.dart';
 import 'package:condo_project/reward/rewardPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LayOutPage extends StatefulWidget {
   const LayOutPage({Key? key}) : super(key: key);
@@ -13,8 +17,11 @@ class LayOutPage extends StatefulWidget {
 }
 
 class _LayOutPageState extends State<LayOutPage> {
+  //variable
+  late Map resp_json;
   int _selectedIndex = 0;
   Widget currentPage = HomePage();
+
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -28,6 +35,7 @@ class _LayOutPageState extends State<LayOutPage> {
       currentPage = MessagePage();
     } else if (index == 3) {
       //profile
+      currentPage = ProfilePage();
     } else {
       //ข้อผิดลาด
     }
@@ -60,7 +68,7 @@ class _LayOutPageState extends State<LayOutPage> {
           label: 'Message',
         ),
         BottomNavigationBarItem(
-          icon:FaIcon(FontAwesomeIcons.award),
+          icon: FaIcon(FontAwesomeIcons.award),
           label: 'Profile',
         ),
       ],

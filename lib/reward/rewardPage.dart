@@ -1,3 +1,4 @@
+import 'package:condo_project/reward/rewardDetailPage.dart';
 import 'package:flutter/material.dart';
 
 class RewardPage extends StatefulWidget {
@@ -8,9 +9,15 @@ class RewardPage extends StatefulWidget {
 }
 
 class _RewardPageState extends State<RewardPage> {
+  
+
   InkWell cardProduct() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        MaterialPageRoute materialPageRoute =
+            MaterialPageRoute(builder: (context) => RewardDetailPage());
+        Navigator.of(context).push(materialPageRoute);
+      },
       child: Card(
         color: Color.fromRGBO(112, 112, 112, 200),
         clipBehavior: Clip.antiAlias,
@@ -58,7 +65,7 @@ class _RewardPageState extends State<RewardPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView.builder(
-          itemCount: 2,
+          itemCount: 1,
           itemBuilder: (context, index) {
             return cardProduct();
           },
