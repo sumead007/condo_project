@@ -10,7 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LayOutPage extends StatefulWidget {
-  const LayOutPage({Key? key}) : super(key: key);
+  const LayOutPage({Key key}) : super(key: key);
 
   @override
   _LayOutPageState createState() => _LayOutPageState();
@@ -18,7 +18,7 @@ class LayOutPage extends StatefulWidget {
 
 class _LayOutPageState extends State<LayOutPage> {
   //variable
-  late Map resp_json;
+ Map resp_json;
   int _selectedIndex = 0;
   Widget currentPage = HomePage();
 
@@ -27,13 +27,13 @@ class _LayOutPageState extends State<LayOutPage> {
     if (index == 0) {
       // reward
       currentPage = RewardPage();
-    } else if (index == 1) {
-      // famillymart
-      currentPage = FamilyMartPage();
-    } else if (index == 2) {
-      //message
-      currentPage = MessagePage();
-    } else if (index == 3) {
+    // } else if (index == 1) {
+    //   // famillymart
+    //   currentPage = FamilyMartPage();
+    // } else if (index == 2) {
+    //   //message
+    //   currentPage = MessagePage();
+    } else if (index == 1) { //ถ้าปลดคอมเม้น index == 3
       //profile
       currentPage = ProfilePage();
     } else {
@@ -59,14 +59,14 @@ class _LayOutPageState extends State<LayOutPage> {
           icon: FaIcon(FontAwesomeIcons.award),
           label: 'Reward',
         ),
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.shoppingBasket),
-          label: 'FamillyMart',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
-          label: 'Message',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: FaIcon(FontAwesomeIcons.shoppingBasket),
+        //   label: 'FamillyMart',
+        // ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(Icons.notifications),
+        //   label: 'Message',
+        // ),
         BottomNavigationBarItem(
           icon: FaIcon(FontAwesomeIcons.award),
           label: 'Profile',

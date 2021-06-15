@@ -2,7 +2,7 @@ import 'package:condo_project/unitity/myStyle.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailPage extends StatefulWidget {
-  const ProductDetailPage({Key? key}) : super(key: key);
+  const ProductDetailPage({Key key}) : super(key: key);
 
   @override
   _ProductDetailPageState createState() => _ProductDetailPageState();

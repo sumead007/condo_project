@@ -2,7 +2,7 @@ import 'package:condo_project/productDetail/productDetail.dart';
 import 'package:flutter/material.dart';
 
 class FamilyMartPage extends StatefulWidget {
-  const FamilyMartPage({Key? key}) : super(key: key);
+  const FamilyMartPage({Key key}) : super(key: key);
 
   @override
   _FamilyMartPageState createState() => _FamilyMartPageState();

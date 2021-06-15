@@ -2,7 +2,7 @@ import 'package:condo_project/reward/rewardDetailPage.dart';
 import 'package:flutter/material.dart';
 
 class RewardPage extends StatefulWidget {
-  const RewardPage({Key? key}) : super(key: key);
+  const RewardPage({Key key}) : super(key: key);
 
   @override
   _RewardPageState createState() => _RewardPageState();

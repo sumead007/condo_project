@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:condo_project/unitity/getData/getData.dart';
 import 'package:condo_project/unitity/ipApi.dart';
@@ -13,7 +14,7 @@ import 'package:http/http.dart' as http;
 import '../main.dart';
 
 class RewardDetailPage extends StatefulWidget {
-  const RewardDetailPage({Key? key}) : super(key: key);
+  const RewardDetailPage({Key key}) : super(key: key);
 
   @override
   _RewardDetailPageState createState() => _RewardDetailPageState();
@@ -21,13 +22,14 @@ class RewardDetailPage extends StatefulWidget {
 
 class _RewardDetailPageState extends State<RewardDetailPage> {
 //variable
-  late Map user;
-  late var point;
-  late Map resp_json;
-  int _counter = 10;
-  late Timer _timer;
+  Map user;
+  var point;
+  Map resp_json;
+  String code = "ลองอีกครั้ง";
   int estimateTs = DateTime(2021, 6, 15, 7, 15, 30)
       .millisecondsSinceEpoch; // set needed date
+  // int estimateTs = DateTime(2021, 6, 15, 7, 15, 30)
+  // .millisecondsSinceEpoch; // set needed date
 
   //method
   @override
@@ -56,6 +58,7 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
       setState(() {
         resp_json = json.decode(response.body);
         setDateTime(resp_json);
+        getCode(resp_json);
       });
 
       print(resp_json);
@@ -64,15 +67,31 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
     }
   }
 
-  void setDateTime(Map time) {
+  void getCode(Map data) {
+    code = data['code'].toString();
+  }
+
+  void setDateTime(Map dtime) {
     try {
       // print(time);
-      String str = time['expire'].toString();
+      String str = dtime['expire'].toString();
       //split string
       var arr = str.split(' ');
       print(arr);
+      var date = arr[0].split('-');
+      print(date);
+      var time = arr[1].split(':');
+      print(time);
+
       setState(() {
-        estimateTs = DateTime(2021, 6, 15, 7, 15, 30).millisecondsSinceEpoch;
+        estimateTs = DateTime(
+                int.parse(date[0]),
+                int.parse(date[1]),
+                int.parse(date[2]),
+                int.parse(time[0]),
+                int.parse(time[1]),
+                int.parse(time[2]))
+            .millisecondsSinceEpoch;
       });
     } catch (e) {
       print(e);
@@ -82,7 +101,7 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
   void getUserU() {
     processGetUser().then((value) {
       setState(() {
-        user = json.decode(value!);
+        user = json.decode(value);
       });
       // print(user);
       processExchange();
@@ -92,7 +111,7 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
   void getPointU() {
     processGetPoint().then((value) {
       setState(() {
-        point = value!;
+        point = value;
       });
     });
   }
@@ -123,7 +142,15 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
   Widget textCode() => Align(
         alignment: Alignment.center,
         child: Text(
-          "โค้ด: 123456",
+          "โค้ด: $code",
+          style: TextStyle(fontSize: 28.0),
+        ),
+      );
+
+  Widget textNameProduct() => Align(
+        alignment: Alignment.center,
+        child: Text(
+          "แลกสินค้าในร้าน FamilyMart",
           style: TextStyle(fontSize: 28.0),
         ),
       );
@@ -133,11 +160,16 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
       width: MediaQuery.of(context).size.width * 0.8,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.green, // background
+          primary: Colors.red, // background
           onPrimary: Colors.white, // foreground
         ),
-        onPressed: () {},
-        child: Text('ออก'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text(
+          'ออก',
+          style: TextStyle(fontSize: 16.0),
+        ),
       ),
     );
   }
@@ -173,36 +205,40 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
           var dateString =
               '${remaining.inHours}:${format.format(DateTime.fromMillisecondsSinceEpoch(remaining.inMilliseconds))}';
           // print("date ==>>>"+dateString);
-          return remaining.inHours < 0
-              ? Container(
-                  // color: Colors.greenAccent.withOpacity(0.3),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "หมดเวลา",
-                    style: TextStyle(fontSize: 28.0),
-                  ),
-                )
-              : Container(
-                  // color: Colors.greenAccent.withOpacity(0.3),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "หมดเวลาอีก: " + dateString,
-                    style:
-                        TextStyle(fontSize: 28.0, color: Colors.red.shade600),
-                  ),
-                );
+          if (remaining.inHours < 0) {
+            return Container(
+              // color: Colors.greenAccent.withOpacity(0.3),
+              alignment: Alignment.center,
+              child: Text(
+                "หมดเวลาแล้วกรุณาทำรายการใหม่",
+                style: TextStyle(fontSize: 28.0, color: Colors.red.shade600),
+              ),
+            );
+          } else {
+            return Container(
+              // color: Colors.greenAccent.withOpacity(0.3),
+              alignment: Alignment.center,
+              child: Text(
+                "หมดเวลาอีก: " + dateString,
+                style: TextStyle(fontSize: 28.0, color: Colors.green),
+              ),
+            );
+          }
         });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('แลกสินค้าในร้าน FamilyMart'),
+      ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
             imgProduct(),
+            textNameProduct(),
             textYourPoint(),
             textCode(),
             timmer(),

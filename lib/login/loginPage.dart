@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -20,7 +20,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //variable
-  late Map resp_json;
+   Map resp_json;
 
   @override
   void initState() {
