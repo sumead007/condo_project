@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+
 import 'package:condo_project/layout/layoutPage.dart';
 import 'package:condo_project/login/loginPage.dart';
 import 'package:condo_project/unitity/getData/getData.dart';
 import 'package:condo_project/unitity/myStyle.dart';
+import 'package:condo_project/unitity/normalDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
         setState(() {
           user = json.decode(value);
         });
-        print(user);
+        // print(user);
         fnameController.text = user['residents_prefix'].toString() +
             user['residents_name'].toString() +
             " (" +
@@ -62,7 +64,13 @@ class _ProfilePageState extends State<ProfilePage> {
           onPrimary: Colors.white, // foreground
         ),
         onPressed: () {
-          processLogout(context);
+          confirmDialog('คุณต้องการออกจากระบบใช่หรือไม่?', "ออกจากระบบ",
+                  "ยกเลิก", Colors.red, Colors.blue, context)
+              .then((chk) {
+            if (chk) {
+              processLogout(context);
+            }
+          });
         },
         child: Text('ออกจากระบบ'),
       ),
@@ -79,8 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Container imgProfile(BuildContext context) {
     return Container(
-      child: Image.network(
-          'https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png'),
+      child: Image.asset('images/profile_pic.png'),
       width: MediaQuery.of(context).size.width * 0.4,
     );
   }

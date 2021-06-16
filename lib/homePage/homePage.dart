@@ -58,22 +58,24 @@ class _HomePageState extends State<HomePage> {
       child: Image.asset('images/map.png'),
     );
   }
-   Container contentAboutUs(BuildContext context) {
+
+  Widget contentAboutUs(BuildContext context) {
     return Container(
-      // height: MediaQuery.of(context).size.height * 0.2,
+      // padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
+      // height: MediaQuery.of(context).size.height * 0.3,
       color: Colors.grey.shade800,
-      child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque neque tellus, semper finibus auctor eu, hendrerit at nunc. Suspendisse potenti. Proin euismod mollis urna, quis fermentum enim venenatis eget. Quisque tincidunt luctus lectus, a semper tortor interdum nec. Proin dapibus eleifend massa, et euismod erat commodo sed. Sed rutrum ut est ut efficitur. Donec dictum, ligula vel bibendum consectetur, risus elit dignissim eros, vitae ultricies ipsum purus at odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt augue vitae nisi placerat laoreet. Etiam elementum ullamcorper ex. Proin in nisi quis ligula laoreet rutrum vitae vel leo."),
+      child: Image.asset('images/contentAboutUs.png',fit: BoxFit.cover,)
     );
   }
 
   Container contentOther(BuildContext context) {
     return Container(
+      // padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
       // height: MediaQuery.of(context).size.height * 0.3,
-      color: Colors.grey.shade900,
-      child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque neque tellus, semper finibus auctor eu, hendrerit at nunc. Suspendisse potenti. Proin euismod mollis urna, quis fermentum enim venenatis eget. Quisque tincidunt luctus lectus, a semper tortor interdum nec. Proin dapibus eleifend massa, et euismod erat commodo sed. Sed rutrum ut est ut efficitur. Donec dictum, ligula vel bibendum consectetur, risus elit dignissim eros, vitae ultricies ipsum purus at odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt augue vitae nisi placerat laoreet. Etiam elementum ullamcorper ex. Proin in nisi quis ligula laoreet rutrum vitae vel leo."),
+      color: Colors.grey.shade800,
+      child: Image.asset('images/detailRoom.jpg',fit: BoxFit.cover,)
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,6 @@ class _HomePageState extends State<HomePage> {
           slideImage(),
           MyStyles().mysizedBox,
           contentAboutUs(context),
-          MyStyles().mysizedBox,
           contentOther(context),
           MyStyles().mysizedBox,
           map(),

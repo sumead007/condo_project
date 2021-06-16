@@ -25,7 +25,7 @@ class _RewardPageState extends State<RewardPage> {
           children: [
             ListTile(
               // leading: Icon(Icons.arrow_drop_down_circle),
-              title: Text('iPhone 12 mini'),
+              title: Text('Family Mart'),
               // subtitle: Text(
               //   'Secondary Text',
               //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
@@ -36,24 +36,25 @@ class _RewardPageState extends State<RewardPage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'การสั่งซื้อสินค้าไอโฟน 12 (iPhone 12) จากร้านค้าต่างๆ จะได้รับบริการเคลมคืนสินค้ากรณีสินค้ามีปัญหา……',
+                'แลกสินค้าใน Family Mart',
                 style: TextStyle(color: Colors.white.withOpacity(0.6)),
               ),
             ),
-            ButtonBar(
-              alignment: MainAxisAlignment.start,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    // Perform some action
-                  },
-                  child: Text(
-                    '12 แต้ม',
-                    style: TextStyle(color: Color.fromRGBO(187, 134, 252, 1)),
-                  ),
-                ),
-              ],
-            ),
+            
+            // ButtonBar(
+            //   alignment: MainAxisAlignment.start,
+            //   children: [
+            //     TextButton(
+            //       onPressed: () {
+            //         // Perform some action
+            //       },
+            //       child: Text(
+            //         '12 แต้ม',
+            //         style: TextStyle(color: Color.fromRGBO(187, 134, 252, 1)),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

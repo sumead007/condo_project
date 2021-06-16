@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:condo_project/unitity/getData/getData.dart';
+import 'package:condo_project/unitity/getData/logout.dart';
 import 'package:condo_project/unitity/ipApi.dart';
 import 'package:condo_project/unitity/myStyle.dart';
 import 'package:condo_project/unitity/normalDialog.dart';
@@ -57,15 +58,24 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
       );
       setState(() {
         resp_json = json.decode(response.body);
-        setDateTime(resp_json);
-        getCode(resp_json);
+        if (resp_json['error'] != null) {
+          normalDialog('เซสชั่นหมดอายุ กรุณาล็อกอินใหม่อีกครั้ง', context)
+              .then((value) {
+            print("err");
+            processLogout(context);
+          });
+        } else {
+          setDateTime(resp_json);
+          getCode(resp_json);
+        }
       });
-
-      print(resp_json);
+      // print(resp_json);
     } catch (e) {
       print("มีerror =>>>" + e.toString());
     }
   }
+
+  
 
   void getCode(Map data) {
     code = data['code'].toString();
@@ -77,11 +87,11 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
       String str = dtime['expire'].toString();
       //split string
       var arr = str.split(' ');
-      print(arr);
+      // print(arr);
       var date = arr[0].split('-');
-      print(date);
+      // print(date);
       var time = arr[1].split(':');
-      print(time);
+      // print(time);
 
       setState(() {
         estimateTs = DateTime(
