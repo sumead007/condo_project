@@ -24,7 +24,7 @@ class RewardDetailPage extends StatefulWidget {
 class _RewardDetailPageState extends State<RewardDetailPage> {
 //variable
   Map user;
-  var point;
+  String point;
   Map resp_json;
   String code = "ลองอีกครั้ง";
   int estimateTs = DateTime(2021, 6, 15, 7, 15, 30)
@@ -121,8 +121,9 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
   void getPointU() {
     processGetPoint().then((value) {
       setState(() {
-        point = value;
+        point = value.toString();
       });
+      // print(value);
     });
   }
 

@@ -133,8 +133,8 @@ class _LoginPageState extends State<LoginPage> {
       );
       var point = json.decode(response.body);
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString("point", point['point']);
-      // print(point['point'].toString());
+      preferences.setString("point", point['point'].toString());
+      // print(point);
     } catch (e) {
       print(e);
     }
