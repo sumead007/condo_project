@@ -188,8 +188,8 @@ class _RewardDetailPageState extends State<RewardDetailPage> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Container(
-        child: Image.network(
-          "https://d2pa5gi5n2e1an.cloudfront.net/webp/global/images/product/mobilephones/Apple_iPhone_X_/Apple_iPhone_X__L_1.jpg",
+        child: Image.asset(
+          "images/family.jpg",
           fit: BoxFit.cover,
         ),
         padding: EdgeInsets.all(20.0),

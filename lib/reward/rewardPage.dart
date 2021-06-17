@@ -31,8 +31,8 @@ class _RewardPageState extends State<RewardPage> {
               //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
               // ),
             ),
-            Image.network(
-                'https://droidsans.com/wp-content/uploads/2021/05/iphone-12-1280x720.jpg'),
+            Image.asset(
+                'images/family.jpg'),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(

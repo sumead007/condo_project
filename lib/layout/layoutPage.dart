@@ -68,7 +68,7 @@ class _LayOutPageState extends State<LayOutPage> {
         //   label: 'Message',
         // ),
         BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.award),
+          icon: FaIcon(FontAwesomeIcons.user),
           label: 'Profile',
         ),
       ],
