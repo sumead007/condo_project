@@ -1,8 +1,7 @@
 import 'dart:convert';
-
-
 import 'package:condo_project/layout/layoutPage.dart';
 import 'package:condo_project/login/loginPage.dart';
+import 'package:condo_project/profile/resetPasswordPage.dart';
 import 'package:condo_project/unitity/getData/getData.dart';
 import 'package:condo_project/unitity/myStyle.dart';
 import 'package:condo_project/unitity/normalDialog.dart';
@@ -73,6 +72,23 @@ class _ProfilePageState extends State<ProfilePage> {
           });
         },
         child: Text('ออกจากระบบ'),
+      ),
+    );
+  }
+
+  Container btnResetPassword(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.yellowAccent.shade700, // background
+          onPrimary: Colors.black, // foreground
+        ),
+        onPressed: () {
+          MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (context)=> ResetPasswordPage());
+          Navigator.push(context, materialPageRoute);
+        },
+        child: Text('เปลี่ยนรหัสผ่าน'),
       ),
     );
   }
@@ -203,6 +219,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 MyStyles().mysizedBox,
                 fieldTel(context),
                 MyStyles().mysizedBox,
+                btnResetPassword(context),
                 btnLogin(context),
                 MyStyles().mysizedBox,
                 MyStyles().mysizedBox,
